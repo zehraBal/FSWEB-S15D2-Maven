@@ -1,13 +1,13 @@
 package org.example.entity;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
-import java.util.regex.Pattern;
 
 public class StringSet {
 
-    public static Set<String> findUniqueWords() {
+    public static Set<String> findUniqueWords(){
         String text = "Carroll began writing the manuscript of the story the next day, although that earliest version is lost. " +
                 "The girls and Carroll took another boat trip a month later, when he elaborated the plot to the story of Alice, " +
                 "and in November he began working on the manuscript in earnest. To add the finishing touches he researched " +
@@ -28,23 +28,13 @@ public class StringSet {
                 "that did not appear in the manuscript. The only known manuscript copy of Under Ground " +
                 "is held in the British Library. Macmillan published a facsimile of the manuscript in 1886.";
 
-        // Remove special characters and convert the text to lower case
-        String cleanedText = text.replaceAll("[.,!?\"“”\\-—]", "").toLowerCase();
+        String newText = text.replaceAll("[.,!?\"“”\\-—]", "");
+        newText = newText.toLowerCase();
 
-        // Split the text into words using a regex pattern that considers all whitespace characters
-        String[] words = cleanedText.split("\\s+");
+        String[] words = newText.split(" ");
 
-        // Use a TreeSet to store unique words and sort them alphabetically
-        return new TreeSet<>(Arrays.asList(words));
-    }
+           return new TreeSet<>(List.of(words));
 
-    public static void main(String[] args) {
-        Set<String> uniqueWords = findUniqueWords();
 
-        // Output the number of unique words
-        System.out.println("Number of unique words: " + uniqueWords.size());
-
-        // Output the sorted unique words
-        System.out.println("Sorted unique words: " + uniqueWords);
     }
 }
